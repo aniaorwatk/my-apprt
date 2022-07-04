@@ -1,23 +1,44 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Greeting from './Greeting'
+
+
+
+interface IUserProps{
+  nameU: string; 
+  email: string; 
+  roles: string[]
+}
+
+const User = ({nameU, email, roles=[]}: IUserProps)=>{
+
+  return(
+    <li>
+      {nameU} ({email}) [{roles.map((role:string)=>role)}]
+    </li>
+  )
+}
+
+interface IHelloProps {
+  name:string,
+  message:string
+}
+
+const UserList =()=> {
+  return(
+    <ul>
+      <User nameU={"Adam"} email={"adam@kskkss.com"} roles={['admin']}/>
+    </ul>
+  )
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <UserList/>
+        <Greeting />
       </header>
     </div>
   );
